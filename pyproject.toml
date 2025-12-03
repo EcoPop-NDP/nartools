@@ -19,3 +19,7 @@ canaddress = { git = "https://github.com/ZacharyCoumont/canaddress.git" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
