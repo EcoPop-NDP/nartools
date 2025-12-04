@@ -1,7 +1,7 @@
 import re
 import sys
 
-from canaddress import canaddress
+import canaddress
 from unidecode import unidecode
 from Levenshtein import distance
 from pypika import Query, Criterion, functions as fn
