@@ -78,6 +78,10 @@ def format_mailing_address(conn, addr_guid, one_line=False):
     if address is None:
         return None
 
+    mailing_address = format_mailing_address_base(address, one_line)
+    return mailing_address
+
+def format_mailing_address_base(address, one_line=False):
     apt_no = address['apt_no_label'] or ''
     civic_no = ' '.join([x for x in [address['civic_no'], address['civic_no_suffix']] if x])
     if apt_no and civic_no:
