@@ -204,7 +204,7 @@ def find_address(conn, address):
 
     with conn.cursor() as cur:
         if len(place_cache) == 0:
-            print('Populating place cache...')
+            # print('Populating place cache...')
             municipal_query = Query.from_(table).select(table.mail_mun_name).distinct().where(table.mail_mun_name.isnotnull())
             place_cache = [x[0] for x in execute_log(cur, municipal_query.get_sql()).fetchall()]
             place_cache_simple = [simplify_value(x) for x in place_cache]
@@ -275,15 +275,15 @@ def find_address(conn, address):
 
                 narrow_cache_key = Criterion.all(narrow_conditions).get_sql()
                 if narrow_cache_key in narrow_cache:
-                    print("CACHE HIT")
+                    # print("CACHE HIT")
                     narrowed = narrow_cache[narrow_cache_key]
                 else:
                     # Clear the cache if it is too large
                     if len(narrow_cache) > 2000:
-                        print("CACHE CLEAR")
+                        # print("CACHE CLEAR")
                         narrow_cache = {}
 
-                    print("CACHE ADD")
+                    # print("CACHE ADD")
                     narrowed = execute_log(cur, Query.from_(table).select(table.mail_street_name, table.mail_street_type, table.mail_street_dir).distinct().where(Criterion.all(narrow_conditions)).get_sql()).fetchall()
                     narrowed = narrowed + execute_log(cur, Query.from_(table).select(table.official_street_name, table.official_street_type, table.official_street_dir).distinct().where(Criterion.all(narrow_conditions)).get_sql()).fetchall()
                     narrow_cache[narrow_cache_key] = narrowed
