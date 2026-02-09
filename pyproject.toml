@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.12"
 dependencies = [
-    "canaddress@f50dc1c8d051dab0de143852fb51a9c93ef47b39",
+    "canaddress",
     "levenshtein>=0.27.1",
     "probableparsing>=0.0.1",
     "psycopg>=3.2.10",
@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-canaddress = { git = "https://github.com/EcoPop-NDP/canaddress.git" }
+canaddress = { git = "https://github.com/EcoPop-NDP/canaddress.git@f50dc1c8d051dab0de143852fb51a9c93ef47b39" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
